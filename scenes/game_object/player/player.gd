@@ -28,6 +28,7 @@ func _ready():
 		arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	GameEvents.dialog_started.connect(on_dialog_started)
 	GameEvents.dialog_finished.connect(on_dialog_finished)
+	GameEvents.shop_started.connect(on_shop_started)
 
 func _process(delta):
 	if can_move:
@@ -90,6 +91,9 @@ func on_arena_difficulty_increased(difficulty: int):
 		health_component.heal(1)
 
 func on_dialog_started(_a, _b):
+	can_move = false
+
+func on_shop_started():
 	can_move = false
 
 func on_dialog_finished(_a):

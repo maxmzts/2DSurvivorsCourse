@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://58w7puw1psh4"]
+
+[ext_resource type="Script" path="res://scenes/UI/smith_meta_menu.gd" id="1_0ib6u"]
+[ext_resource type="Resource" uid="uid://m3uppqrtc558" path="res://resources/meta_upgrades/experience_gain.tres" id="2_j6keo"]
+[ext_resource type="Resource" uid="uid://k0tysdom82no" path="res://resources/meta_upgrades/health_regeneration.tres" id="3_5jdd7"]
+[ext_resource type="PackedScene" uid="uid://ba0uf3o7kah47" path="res://scenes/UI/meta_upgrade_card.tscn" id="5_snrhl"]
+
+[node name="MetaMenu" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_0ib6u")
+upgrades = Array[Resource("res://resources/meta_upgrades/meta_upgrade.gd")]([ExtResource("2_j6keo"), ExtResource("3_5jdd7")])
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.172549)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.01
+anchor_right = 0.99
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/h_separation = 24
+columns = 2
+
+[node name="MetaUpgradeCard" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard2" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard3" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard4" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard5" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard6" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard7" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard8" parent="ScrollContainer/MarginContainer2/GridContainer" instance=ExtResource("5_snrhl")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 82.0
+offset_bottom = 53.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="BackButton" type="Button" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"

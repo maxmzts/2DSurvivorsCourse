@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://but8va85qamic"]
+
+[ext_resource type="Script" path="res://scenes/game_object/shop_npc/shop_npc.gd" id="1_bps77"]
+[ext_resource type="Texture2D" uid="uid://cjlwwmhmvf4po" path="res://scenes/game_object/npc/guy.png" id="2_3ritm"]
+[ext_resource type="PackedScene" uid="uid://cp0b4vu3c3jdr" path="res://scenes/game_object/interactable/interactable.tscn" id="3_h7hio"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_876ab"]
+radius = 5.0
+
+[node name="ShopNPC" type="CharacterBody2D"]
+script = ExtResource("1_bps77")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ritm")
+
+[node name="Interactable" parent="." instance=ExtResource("3_h7hio")]
+position = Vector2(0, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_876ab")

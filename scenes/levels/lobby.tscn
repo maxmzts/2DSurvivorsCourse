@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3k6s565abc3s"]
+[gd_scene load_steps=14 format=3 uid="uid://b3k6s565abc3s"]
 
 [ext_resource type="PackedScene" uid="uid://cudegp26recte" path="res://scenes/managers/dialog_manager.tscn" id="1_abw61"]
 [ext_resource type="PackedScene" uid="uid://cces2id434kvj" path="res://scenes/game_object/game_camera/game_camera.tscn" id="1_tkwb1"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cjv0pnt6hve08" path="res://scenes/game_object/level_changer/level_changer_area.tscn" id="4_rtkck"]
 [ext_resource type="PackedScene" uid="uid://bd5p0o3o0722w" path="res://scenes/game_object/npc/npc.tscn" id="4_vtx44"]
 [ext_resource type="PackedScene" uid="uid://cgov8wfsg4g4n" path="res://scenes/levels/arena2.tscn" id="5_k7hn0"]
-[ext_resource type="Texture2D" uid="uid://6tqynqcj6cdq" path="res://scenes/game_object/npc/smith.png" id="9_prx88"]
+[ext_resource type="PackedScene" uid="uid://but8va85qamic" path="res://scenes/game_object/shop_npc/shop_npc.tscn" id="9_7k6dj"]
+[ext_resource type="Texture2D" uid="uid://b8qavwcbv5b72" path="res://scenes/game_object/shop_npc/smith.png" id="10_3osjw"]
+[ext_resource type="PackedScene" uid="uid://c28mq84tbpg8i" path="res://scenes/UI/shop_panel.tscn" id="11_02vv0"]
+[ext_resource type="PackedScene" uid="uid://58w7puw1psh4" path="res://scenes/UI/smith_meta_menu.tscn" id="12_nydfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2372m"]
 size = Vector2(40, 20)
@@ -57,14 +60,17 @@ position = Vector2(487, 337)
 position = Vector2(394, 339)
 npc_name = "Roberto"
 
-[node name="SmithNPC" parent="world/Entities" instance=ExtResource("4_vtx44")]
-position = Vector2(616, 259)
+[node name="ShopNPC" parent="world/Entities" instance=ExtResource("9_7k6dj")]
+position = Vector2(615, 259)
 npc_name = "Smith"
-npc_sprite = ExtResource("9_prx88")
+npc_shop_statement = "My weapons will make you powerful."
+npc_sprite = ExtResource("10_3osjw")
+shop_panel = ExtResource("11_02vv0")
+shop_menu = ExtResource("12_nydfh")
 
 [node name="Foreground" type="Node2D" parent="world" groups=["foreground_layer"]]
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." groups=["ui_elements"]]
 
 [node name="Control" type="Control" parent="UI"]
 layout_mode = 3

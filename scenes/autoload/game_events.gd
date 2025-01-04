@@ -6,6 +6,7 @@ signal player_damaged()
 
 signal dialog_started(npc_name: String, npc_dialog: Dictionary)
 signal dialog_finished(disconnect: bool)
+signal shop_started
 
 # arena events
 
@@ -25,4 +26,7 @@ func emit_dialog_started(npc_name: String, npc_dialog: Dictionary):
 	
 func emit_dialog_finished(delete_interaction: bool):
 	dialog_finished.emit(delete_interaction)
+	
+func emit_shop_started():
+	shop_started.emit()
 
