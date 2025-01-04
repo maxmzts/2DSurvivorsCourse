@@ -15,7 +15,7 @@ func on_play_pressed():
 
 func on_quick_play_pressed():
 	#autoload node
-	ScreenTransition.transition_to_scene("res://scenes/main/main.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/levels/arena2.tscn")
 	
 func on_meta_pressed():
 	ScreenTransition.transition_to_scene("res://scenes/UI/meta_menu.tscn")

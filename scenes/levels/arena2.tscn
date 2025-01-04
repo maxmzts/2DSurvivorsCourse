@@ -1,27 +1,30 @@
-[gd_scene load_steps=14 format=3 uid="uid://cgov8wfsg4g4n"]
+[gd_scene load_steps=15 format=3 uid="uid://cgov8wfsg4g4n"]
 
 [ext_resource type="PackedScene" uid="uid://cc1es54syva8b" path="res://scenes/UI/arena_time_ui.tscn" id="1_2m56s"]
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_dfuor"]
 [ext_resource type="PackedScene" uid="uid://cces2id434kvj" path="res://scenes/game_object/game_camera/game_camera.tscn" id="1_sgvj1"]
+[ext_resource type="Script" path="res://scenes/levels/arena.gd" id="1_vuobw"]
 [ext_resource type="PackedScene" uid="uid://8e2upv4datyi" path="res://scenes/UI/experience_bar.tscn" id="2_1p38b"]
 [ext_resource type="TileSet" uid="uid://5goq7ml33dsg" path="res://resources/tileset.tres" id="2_kp6o8"]
 [ext_resource type="PackedScene" uid="uid://cxmc0dkwf14tl" path="res://scenes/UI/end_screen.tscn" id="2_qdm34"]
 [ext_resource type="PackedScene" uid="uid://d0kvhcukldmh8" path="res://scenes/UI/vignette.tscn" id="3_cqqog"]
 [ext_resource type="PackedScene" uid="uid://cn55hyfno4n3m" path="res://scenes/game_object/player/player.tscn" id="3_jqym0"]
+[ext_resource type="PackedScene" uid="uid://dmlaibjjjpbaj" path="res://scenes/managers/pause_manager.tscn" id="5_bde3j"]
 [ext_resource type="PackedScene" uid="uid://cvvu6k8kwlf0t" path="res://scenes/managers/enemy_manager.tscn" id="5_lpvgo"]
 [ext_resource type="PackedScene" uid="uid://dtrndpdth4voq" path="res://scenes/managers/arena_time_manager.tscn" id="6_7p22m"]
 [ext_resource type="PackedScene" uid="uid://btmsraripc3ph" path="res://scenes/managers/upgrade_manager.tscn" id="6_rwfrf"]
 [ext_resource type="PackedScene" uid="uid://dbaeik5713wo7" path="res://scenes/managers/experience_manager.tscn" id="7_uq1ra"]
 [ext_resource type="PackedScene" uid="uid://qm1ng5s373f1" path="res://scenes/UI/health_bar.tscn" id="13_1f3x4"]
 
-[node name="Main" type="Node"]
-script = ExtResource("1_dfuor")
+[node name="Arena2" type="Node"]
+script = ExtResource("1_vuobw")
 end_screen_scene = ExtResource("2_qdm34")
 
 [node name="Vignette" parent="." instance=ExtResource("3_cqqog")]
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_2m56s")]
 arena_time_manager = NodePath("../ArenaTimeManager")
+
+[node name="PauseManager" parent="." instance=ExtResource("5_bde3j")]
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("6_7p22m")]
 
