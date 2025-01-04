@@ -20,7 +20,7 @@ func _ready():
 	tween.tween_property(panel_container, "scale", Vector2.ZERO, 0)
 	tween.tween_property(panel_container, "scale", Vector2.ONE, .3)\
 	.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
-	
+
 func _unhandled_input(event):
 	# as pause is not handled we need this function
 	if event.is_action_pressed("pause"):
@@ -29,8 +29,8 @@ func _unhandled_input(event):
 		if options_menu == null:
 			close()
 		get_tree().root.set_input_as_handled()
-		
-		
+
+
 func close():
 	if is_closing:
 		return
@@ -46,19 +46,20 @@ func close():
 	await tween.finished
 	get_tree().paused = false
 	queue_free()
-	
-	
+
+
 func on_resume_pressed():
 	close()
-	
+
 func on_options_pressed():
 	var options_instance = options_scene.instantiate()
 	add_child(options_instance)	
 	options_instance.back_pressed.connect(on_options_closed.bind(options_instance))
-	
+
 func on_quit_pressed():
+	MetaProgression.save()
 	ScreenTransition.transition_to_scene("res://scenes/UI/main_menu.tscn")
-	
+
 func on_options_closed(options_menu: Node):
 	var tween = create_tween()
 	tween.tween_property(options_menu, "scale", Vector2.ONE, 0)
@@ -66,5 +67,3 @@ func on_options_closed(options_menu: Node):
 	.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
 	
 	options_menu.queue_free()
-	
-	
