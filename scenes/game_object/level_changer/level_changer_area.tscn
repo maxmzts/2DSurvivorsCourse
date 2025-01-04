@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjv0pnt6hve08"]
+
+[ext_resource type="Script" path="res://scenes/game_object/level_changer/level_changer_area.gd" id="1_kbcly"]
+
+[node name="LevelChangerArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_kbcly")
