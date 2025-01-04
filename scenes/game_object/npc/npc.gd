@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-@export var npc_name:  = ""
+@export var npc_name: String  = ""
+@export var npc_sprite: Texture2D
+
 @export_multiline var npc_dialog: Dictionary = {
 	"dialog": "Which is the meaning of existence if I'm just a node, a bunch of code inside your computer?",
 	"answers": {
@@ -24,6 +26,8 @@ extends CharacterBody2D
 @onready var interactable: Interactable = $Interactable
 
 func _ready():
+	if npc_sprite:
+		$Sprite2D.texture = npc_sprite
 	interactable.interact = _on_interact
 	interactable.interact_label = "Talk to " + npc_name
 	
