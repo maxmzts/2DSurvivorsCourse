@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://du26bp368ew1h"]
+
+[ext_resource type="PackedScene" uid="uid://cudegp26recte" path="res://scenes/managers/dialog_manager.tscn" id="1_sh5ii"]
+[ext_resource type="PackedScene" uid="uid://dmlaibjjjpbaj" path="res://scenes/managers/pause_manager.tscn" id="2_maqxg"]
+[ext_resource type="PackedScene" uid="uid://cces2id434kvj" path="res://scenes/game_object/game_camera/game_camera.tscn" id="3_feok2"]
+[ext_resource type="TileSet" uid="uid://5goq7ml33dsg" path="res://resources/tileset.tres" id="4_16bse"]
+[ext_resource type="PackedScene" uid="uid://cjv0pnt6hve08" path="res://scenes/game_object/level_changer/level_changer_area.tscn" id="5_qb0eb"]
+[ext_resource type="PackedScene" uid="uid://cn55hyfno4n3m" path="res://scenes/game_object/player/player.tscn" id="7_i2qq5"]
+[ext_resource type="PackedScene" uid="uid://but8va85qamic" path="res://scenes/game_object/shop_npc/shop_npc.tscn" id="9_mla6o"]
+[ext_resource type="PackedScene" uid="uid://c5is2iuctn36u" path="res://scenes/UI/meta_menus/fountain_meta_menu.tscn" id="10_35wav"]
+[ext_resource type="PackedScene" uid="uid://c28mq84tbpg8i" path="res://scenes/UI/shop_panel.tscn" id="11_nw333"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve80p"]
+size = Vector2(16, 16)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8g8t4"]
+
+[node name="Crypt" type="Node"]
+
+[node name="DialogManager" parent="." instance=ExtResource("1_sh5ii")]
+
+[node name="PauseManager" parent="." instance=ExtResource("2_maqxg")]
+
+[node name="world" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="GameCamera" parent="world" instance=ExtResource("3_feok2")]
+position = Vector2(490, 336)
+
+[node name="TileMap" type="TileMap" parent="world"]
+y_sort_enabled = true
+tile_set = ExtResource("4_16bse")
+format = 2
+layer_0/name = "floor_layer"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(131074, 65536, 0, 196610, 65536, 1, 262146, 65536, 1, 327682, 65536, 1, 393218, 65536, 1, 458754, 65536, 1, 524290, 65536, 1, 589826, 65536, 1, 655362, 65536, 1, 720898, 65536, 1, 786434, 65536, 2, 131075, 131072, 0, 196611, 262144, 3, 262147, 262144, 3, 327683, 0, 4, 393219, 0, 4, 458755, 65536, 4, 524291, 0, 4, 589827, 0, 4, 655363, 0, 4, 720899, 65536, 4, 786435, 131072, 2, 131076, 131072, 0, 196612, 262144, 3, 262148, 262144, 3, 327684, 0, 4, 393220, 0, 4, 458756, 65536, 4, 524292, 0, 4, 589828, 0, 4, 655364, 65536, 4, 720900, 0, 4, 786436, 131072, 2, 131077, 131072, 0, 196613, 262144, 3, 262149, 262144, 3, 327685, 0, 4, 393221, 0, 4, 458757, 0, 4, 524293, 0, 4, 589829, 0, 4, 655365, 0, 4, 720901, 393216, 3, 786437, 131072, 2, 131078, 131072, 0, 196614, 262144, 3, 262150, 262144, 3, 327686, 0, 4, 393222, 65536, 4, 458758, 0, 4, 524294, 0, 4, 589830, 65536, 4, 655366, 0, 4, 720902, 0, 4, 786438, 131072, 2, 131079, 393216, 0, 196615, 393216, 1, 262151, 393216, 1, 327687, 393216, 2, 393223, 393216, 3, 458759, 0, 4, 524295, 0, 4, 589831, 0, 4, 655367, 0, 4, 720903, 0, 4, 786439, 131072, 2, 131080, 131072, 0, 196616, 262144, 3, 262152, 262144, 3, 327688, 0, 4, 393224, 0, 4, 458760, 65536, 4, 524296, 65536, 4, 589832, 0, 4, 655368, 0, 4, 720904, 0, 4, 786440, 131072, 2, 131081, 131072, 0, 196617, 262144, 3, 262153, 262144, 3, 327689, 393216, 3, 393225, 0, 4, 458761, 0, 4, 524297, 0, 4, 589833, 0, 4, 655369, 0, 4, 720905, 0, 4, 786441, 131072, 2, 131082, 131072, 0, 196618, 262144, 3, 262154, 458752, 1, 327690, 0, 4, 393226, 0, 4, 458762, 65536, 4, 524298, 0, 4, 589834, 65536, 4, 655370, 393216, 3, 720906, 65536, 4, 786442, 131072, 2, 131083, 131072, 0, 196619, 262144, 3, 262155, 262144, 3, 327691, 65536, 4, 393227, 393216, 3, 458763, 0, 4, 524299, 0, 4, 589835, 0, 4, 655371, 65536, 4, 720907, 65536, 4, 786443, 131072, 2, 131084, 131072, 0, 196620, 262144, 3, 262156, 262144, 3, 327692, 0, 4, 393228, 393216, 3, 458764, 0, 4, 524300, 0, 4, 589836, 0, 4, 655372, 0, 4, 720908, 0, 4, 786444, 131072, 2, 131085, 393216, 0, 196621, 393216, 1, 262157, 393216, 1, 327693, 393216, 2, 393229, 0, 4, 458765, 0, 4, 524301, 65536, 4, 589837, 0, 4, 655373, 0, 4, 720909, 0, 4, 786445, 131072, 2, 131086, 131072, 0, 196622, 262144, 3, 262158, 262144, 3, 327694, 65536, 4, 393230, 0, 4, 458766, 0, 4, 524302, 0, 4, 589838, 0, 4, 655374, 0, 4, 720910, 0, 4, 786446, 131072, 2, 131087, 131072, 0, 196623, 262144, 3, 262159, 262144, 3, 327695, 65536, 4, 393231, 0, 4, 458767, 0, 4, 524303, 0, 4, 589839, 0, 4, 655375, 65536, 4, 720911, 65536, 4, 786447, 131072, 2, 131088, 131072, 0, 196624, 262144, 3, 262160, 262144, 3, 327696, 65536, 4, 393232, 0, 4, 458768, 0, 4, 524304, 0, 4, 589840, 0, 4, 655376, 0, 4, 720912, 0, 4, 786448, 131072, 2, 131089, 131072, 0, 196625, 262144, 3, 262161, 262144, 3, 327697, 0, 4, 393233, 65536, 4, 458769, 0, 4, 524305, 0, 4, 589841, 0, 4, 655377, 0, 4, 720913, 65536, 4, 786449, 131072, 2, 131090, 196608, 0, 196626, 196608, 1, 262162, 196608, 1, 327698, 196608, 1, 393234, 196608, 1, 458770, 196608, 1, 524306, 196608, 1, 589842, 196608, 1, 655378, 196608, 1, 720914, 196608, 1, 786450, 196608, 2)
+layer_1/name = "decorations_layer"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array(327688, 524288, 2, 327692, 524288, 2, 262152, 524288, 0, 720906, 458753, 8, 262156, 524288, 0)
+
+[node name="LevelChangerArea" parent="world" instance=ExtResource("5_qb0eb")]
+position = Vector2(168, 184)
+level_path = "res://scenes/levels/lobby.tscn"
+spawn_position = Vector2(607, 498)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/LevelChangerArea"]
+shape = SubResource("RectangleShape2D_ve80p")
+
+[node name="Entities" type="Node2D" parent="world" groups=["entities_layer"]]
+y_sort_enabled = true
+
+[node name="Player" parent="world/Entities" instance=ExtResource("7_i2qq5")]
+unique_name_in_owner = true
+position = Vector2(168, 172)
+
+[node name="FountainShopNPC" parent="world/Entities" instance=ExtResource("9_mla6o")]
+position = Vector2(168, 63)
+npc_name = "Fountain of power"
+npc_shop_statement = "You feel power whilst aproaching the fountain"
+npc_sprite = SubResource("CompressedTexture2D_8g8t4")
+shop_panel = ExtResource("11_nw333")
+shop_menu = ExtResource("10_35wav")
+
+[node name="Foreground" type="Node2D" parent="world" groups=["foreground_layer"]]
+
+[node name="UI" type="CanvasLayer" parent="." groups=["ui_elements"]]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -100.0
+offset_right = 212.0
+offset_bottom = -20.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/MarginContainer"]
+layout_mode = 2
