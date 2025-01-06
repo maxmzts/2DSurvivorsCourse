@@ -11,10 +11,12 @@ func _ready():
 
 func on_play_pressed():
 	#autoload node
+	Globals.spawn_position = Vector2(415,363)
 	ScreenTransition.transition_to_scene("res://scenes/levels/lobby.tscn")
 
 func on_quick_play_pressed():
 	#autoload node
+	Globals.spawn_position = Vector2(489,339)
 	ScreenTransition.transition_to_scene("res://scenes/levels/arena2.tscn")
 	
 func on_meta_pressed():

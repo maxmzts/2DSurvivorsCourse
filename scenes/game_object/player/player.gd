@@ -16,6 +16,7 @@ var base_speed = 0
 var can_move: bool
 
 func _ready():
+	global_position = Globals.spawn_position
 	can_move = true
 	base_speed = velocity_component.max_speed
 	$CollisionArea2D.body_entered.connect(on_body_entered)
