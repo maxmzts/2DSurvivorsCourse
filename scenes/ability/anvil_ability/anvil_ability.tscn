@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://csk0mmk1op21c"]
+[gd_scene load_steps=14 format=3 uid="uid://csk0mmk1op21c"]
 
 [ext_resource type="Texture2D" uid="uid://b4lymwls1dpoq" path="res://scenes/ability/anvil_ability/anvil.png" id="1_0nwhj"]
 [ext_resource type="Script" path="res://scenes/ability/anvil_ability/anvil_ability.gd" id="1_lgjge"]
+[ext_resource type="Texture2D" uid="uid://dy06uajpb6vgm" path="res://assets/particles/particle.png" id="2_b4til"]
 [ext_resource type="PackedScene" uid="uid://cli5tllqs0pxb" path="res://scenes/component/hitbox_component.tscn" id="2_n27ys"]
 
 [sub_resource type="Animation" id="Animation_vdhs1"]
@@ -42,6 +43,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0lbsv"]
 resource_name = "default"
@@ -56,7 +69,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.15, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(3.605, 0.517632, 2.14355, 1),
 "update": 0,
-"values": [Vector2(0, -48), Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+"values": [Vector2(0, -48), Vector2(0, 0), Vector2(0, -6), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -96,12 +109,58 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_luntw"]
 _data = {
 "RESET": SubResource("Animation_vdhs1"),
 "default": SubResource("Animation_0lbsv")
 }
+
+[sub_resource type="Gradient" id="Gradient_87515"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.8)
+colors = PackedColorArray(0.545098, 0.607843, 0.705882, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_to3ww"]
+gradient = SubResource("Gradient_87515")
+
+[sub_resource type="Curve" id="Curve_m7oiy"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.292776, 1), -5.59858e-07, -5.59858e-07, 0, 0, Vector2(0.410646, 1), 0.0, 0.0, 0, 0, Vector2(0.806084, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_5pysb"]
+curve = SubResource("Curve_m7oiy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_33ta6"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 1, 0)
+emission_shape = 1
+emission_sphere_radius = 6.0
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 250.0
+initial_velocity_max = 250.0
+gravity = Vector3(0, 0, 0)
+damping_min = 800.0
+damping_max = 1000.0
+attractor_interaction_enabled = false
+scale_min = 0.2
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_5pysb")
+color_initial_ramp = SubResource("GradientTexture1D_to3ww")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nagyf"]
 
@@ -113,6 +172,16 @@ libraries = {
 "": SubResource("AnimationLibrary_luntw")
 }
 autoplay = "default"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_33ta6")
+texture = ExtResource("2_b4til")
+lifetime = 0.6
+explosiveness = 0.9
+fixed_fps = 0
+interpolate = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0nwhj")

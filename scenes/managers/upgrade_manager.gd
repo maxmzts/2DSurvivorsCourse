@@ -16,13 +16,15 @@ var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 var upgrade_sword_rate = preload("res://resources/upgrades/sword_rate.tres")
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres")
 var upgrade_anvil = preload("res://resources/upgrades/anvil.tres")
+var upgrade_anvil_amount = preload("res://resources/upgrades/anvil_amount.tres")
 
 func _ready():
-	upgrade_pool.add_item(upgrade_axe,10)
-	upgrade_pool.add_item(upgrade_anvil,10)
+	upgrade_pool.add_item(upgrade_axe, 10)
+	upgrade_pool.add_item(upgrade_anvil, 5)
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)
+	
 	
 	experience_manager.level_up.connect(on_level_up)
 
@@ -46,11 +48,13 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	
 	update_upgrade_pool(upgrade)
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
-	
+
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 	if chosen_upgrade.id == upgrade_axe.id:
 		upgrade_pool.add_item(upgrade_axe_damage,10)
-	
+	elif chosen_upgrade.id == upgrade_anvil.id:
+		upgrade_pool.add_item(upgrade_anvil_amount, 5)
+
 func pick_upgrades():
 	var chosen_upgrades: Array[AbilityUpgrade] = []
 	for i in 2:
@@ -63,11 +67,11 @@ func pick_upgrades():
 
 	
 	return chosen_upgrades
-		
+
 #when an upgrade has been selected, this func calls the store func
 func on_upgrade_selected(upgrade: AbilityUpgrade):
 	apply_upgrade(upgrade)
-	
+
 #manages the level up presenting the upgrades and storing the selected one
 func on_level_up(current_level: int):
 	var upgrade_screen_instance = upgrade_screen_scene.instantiate()
@@ -76,4 +80,4 @@ func on_level_up(current_level: int):
 	upgrade_screen_instance.set_ability_upgrades(chosen_upgrades as Array[AbilityUpgrade])
 	
 	upgrade_screen_instance.upgrade_selected.connect(on_upgrade_selected)
-	
+
