@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxmc0dkwf14tl"]
+[gd_scene load_steps=10 format=3 uid="uid://cxmc0dkwf14tl"]
 
 [ext_resource type="Script" path="res://scenes/UI/end_screen.gd" id="1_4os64"]
 [ext_resource type="AudioStream" uid="uid://b4sdckv6dc8ye" path="res://assets/audio/jingles_PIZZI10.ogg" id="2_10xoo"]
 [ext_resource type="PackedScene" uid="uid://b3i30v1fe3ih3" path="res://scenes/UI/sound_button.tscn" id="2_swnq1"]
 [ext_resource type="AudioStream" uid="uid://wacthcotfk0h" path="res://assets/audio/jingles_PIZZI07.ogg" id="3_58ryt"]
+[ext_resource type="PackedScene" uid="uid://dwlllofvrxo0r" path="res://scenes/UI/stats_card.tscn" id="6_kau2j"]
 
 [sub_resource type="Animation" id="Animation_3umoo"]
 length = 0.001
@@ -89,20 +90,18 @@ libraries = {
 }
 autoplay = "in"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer"]
 custom_minimum_size = Vector2(215, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 8
@@ -110,11 +109,11 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
@@ -127,7 +126,7 @@ text = "Victory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Desc" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Desc" type="Label" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
@@ -140,15 +139,19 @@ text = "You won!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_swnq1")]
+[node name="RestartButton" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_swnq1")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Go to upgrades"
 
-[node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_swnq1")]
+[node name="QuitButton" parent="HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_swnq1")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit to Menu"
+
+[node name="StatsCard" parent="HBoxContainer" instance=ExtResource("6_kau2j")]
+unique_name_in_owner = true
+layout_mode = 2

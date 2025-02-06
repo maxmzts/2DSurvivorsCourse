@@ -1,7 +1,9 @@
 extends Node
 class_name HealthComponent
 
+#signal to inform nodes inside the individual enemy that it died
 signal died
+
 signal health_change
 signal health_decreased
 
@@ -31,4 +33,6 @@ func get_health_percent():
 func check_death():
 	if current_health == 0:
 		died.emit()
+		# we also emit the global event for stats purposes
+		GameEvents.emit_enemy_killed()
 		owner.queue_free()
