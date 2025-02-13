@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://dvyxtefrimhf0"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_8sane"]
+
+[resource]
+script = ExtResource("1_8sane")
+id = "axe_unlock"
+max_quantity = 1
+experience_cost = 10
+title = "Axe"
+description = "Unlocks a new weapon on the arenas. The axe spins periodically around the player dealing great damage."

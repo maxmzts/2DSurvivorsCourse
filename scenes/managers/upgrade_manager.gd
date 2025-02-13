@@ -19,8 +19,11 @@ var upgrade_anvil = preload("res://resources/upgrades/anvil.tres")
 var upgrade_anvil_amount = preload("res://resources/upgrades/anvil_amount.tres")
 
 func _ready():
-	upgrade_pool.add_item(upgrade_axe, 10)
-	upgrade_pool.add_item(upgrade_anvil, 5)
+	if MetaProgression.get_upgrade_count("anvil_unlock") > 0:
+		upgrade_pool.add_item(upgrade_anvil, 5)
+	if MetaProgression.get_upgrade_count("axe_unlock") > 0:
+		upgrade_pool.add_item(upgrade_axe, 10)
+
 	upgrade_pool.add_item(upgrade_sword_rate, 10)
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	upgrade_pool.add_item(upgrade_player_speed, 5)

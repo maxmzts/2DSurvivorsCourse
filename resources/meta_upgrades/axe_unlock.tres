@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://dfboyse57ahl0"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_j6r23"]
+
+[resource]
+script = ExtResource("1_j6r23")
+id = "anvil_unlock"
+max_quantity = 1
+experience_cost = 10
+title = "Anvil"
+description = "Unlocks a new weapon on the arenas. The anvil periodically falls on a random position around the player dealing great damage."
